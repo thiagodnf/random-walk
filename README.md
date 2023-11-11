@@ -10,6 +10,7 @@ A tool that describes a path that consists of a succession of random steps on so
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 ## Screenshots
+![ezgif com-video-to-gif](https://github.com/thiagodnf/random-walk/assets/114015/2c6ce738-583e-454c-8c33-b3d924d9f887)
 
 ## For Developers
 
