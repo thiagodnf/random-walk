@@ -32,7 +32,7 @@ Feel free to access the <a href="../../discussions">discussions</a> tab as you n
 
 ## Contribute
 
-Contributions to the this project are very welcome! We can't do this alone! Feel free to fork this project, work on it and then make a pull request.
+Contributions to this project are very welcome! We can't do this alone! Feel free to fork this project, work on it and then make a pull request.
 
 ## License
 

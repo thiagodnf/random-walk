@@ -3,8 +3,8 @@ export default class Memory {
     constructor(pos = { i: 0, j: 0 }) {
 
         this.steps = 0;
-        this.maxLines = 1000;
-        this.maxColumns = 1000;
+        this.maxLines = 6000;
+        this.maxColumns = 6000;
 
         this._edges = new Set();
         this._nodes = new Set();
