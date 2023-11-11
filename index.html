@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Random Walk</title>
+
+    <meta name="author" content="Thiago Ferreira">
+    <meta name="description" content="A tool that describes a path that consists of a succession of random steps on some mathematical space">
+    <meta name="keywords" content="random-walk, graph">
+    <meta name="robots" content="index, follow">
+
+    <!-- Vendor -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Application -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <header class="mb-3">
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Random Walk</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <div class="toolbar">
+            <div class="container-fluid">
+                <div class="btn-group d-flex d-sm-inline-flex">
+                    <a href="#" class="btn btn-primary btn-sm" id="btn-play">
+                        <i class="bi bi-play"></i><span class="mx-2">Play</span>
+                    </a>
+                    <a href="#" class="btn btn-primary btn-sm" id="btn-step">
+                        <i class="bi bi-skip-end"></i><span class="mx-2">Step</span>
+                    </a>
+                    <a href="#" class="btn btn-primary btn-sm disabled" id="btn-stop">
+                        <i class="bi bi-stop"></i><span class="mx-2">Stop</span>
+                    </a>
+                </div>
+            </div>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-sm-7 col-md-8 col-lg-9 main-panel">
+                    <canvas id="canvas" width="100%" height="700" class="border rounded"></canvas>
+                </div>
+                <div class="col-12 col-sm-5 col-md-4 col-lg-3 side-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                    <button class="nav-link active" data-toggle="tab" data-bs-toggle="tab" data-bs-target="#info" data-i18n="info">Panel</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body overflow-auto">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="info">
+
+                                    <div class="mb-2">
+                                        <label for="walk" class="form-label">Information</label>
+                                        <div class="row">
+                                            <p class="col-6">Steps</p>
+                                            <div class="col-6 text-end">
+                                                <p class="mb-0 generation-counter" id="steps">0</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <p class="col-6">Nodes</p>
+                                            <div class="col-6 text-end">
+                                                <p class="mb-0 generation-counter" id="nodes">0</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <p class="col-6 mb-0">Edges</p>
+                                            <div class="col-6 text-end">
+                                                <p class="mb-0 shortest-distance" id="edges">0</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="particles" class="col-form-label">Speed</label>
+                                        <div class="btn-group d-flex">
+                                            <input type="radio" class="btn-check" name="speed" id="speed-1x" autocomplete="off" value="200">
+                                            <label class="btn btn-sm btn-outline-primary" for="speed-1x">1x</label>
+                                            <input type="radio" class="btn-check" name="speed" id="speed-2x" autocomplete="off" value="150">
+                                            <label class="btn btn-sm btn-outline-primary" for="speed-2x">2x</label>
+                                            <input type="radio" class="btn-check" name="speed" id="speed-3x" autocomplete="off" value="100">
+                                            <label class="btn btn-sm btn-outline-primary" for="speed-3x">3x</label>
+                                            <input type="radio" class="btn-check" name="speed" id="speed-4x" autocomplete="off" value="50">
+                                            <label class="btn btn-sm btn-outline-primary" for="speed-4x">4x</label>
+                                            <input type="radio" class="btn-check" name="speed" id="speed-5x" autocomplete="off" value="0" checked>
+                                            <label class="btn btn-sm btn-outline-primary" for="speed-5x">5x</label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="walk" class="col-form-label col-6">Walk</label>
+                                        <div class="col-6">
+                                            <select class="form-select form-select-sm" id="walk">
+                                                <option value="1">Random</option>
+                                                <option value="2">Previous Memory</option>
+                                                <option value="3" selected>Full Memory</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- sidebar -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Vendor -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- Application -->
+    <script type="module" src="js/script.js"></script>
+
+</body>
+
+</html>

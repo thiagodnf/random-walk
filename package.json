@@ -1,0 +1,30 @@
+{
+	"name": "random-walk",
+	"version": "0.0.1",
+	"description": "A tool that describes a path that consists of a succession of random steps on some mathematical space",
+	"main": "app.js",
+	"scripts": {
+		"start": "node server.js",
+		"dev": "nodemon server.js",
+		"lint": "npx eslint .",
+		"lint-fix": "npx eslint . --fix",
+		"update-dependencies": "ncu -u"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thiagodnf/random-walk"
+	},
+	"author": "Thiago Ferreira",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/thiagodnf/random-walk/issues"
+	},
+	"homepage": "http://thiagodnf.github.io/wumpus-world-simulator",
+	"devDependencies": {
+		"nodemon": "3.0.1"
+	},
+	"dependencies": {
+		"connect": "3.7.0",
+		"serve-static": "1.15.0"
+	}
+}
